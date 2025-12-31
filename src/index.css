@@ -1,3 +1,10 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+.landing {
+    background-image: url(./assets/movie.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
