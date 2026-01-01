@@ -7,7 +7,7 @@ function Layout() {
   return (
     <div
         className='w-full mi-h-screen bg-white dark:bg-neutral-900'>
-        <NavBar />
+          <NavBar />
 
         <div className=''>
             <Outlet />
