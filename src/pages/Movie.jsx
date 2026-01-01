@@ -43,22 +43,22 @@ function Movie() {
 
   return (
     <div
-      className='relative min-h-screen pt-10.25 md:pt-20 dark:text-white'>
+      className='relative min-h-screen pt-10.25 md:pt-20 dark:text-white max-w-300 mx-auto'>
         <div className='p-15'>
           <span
               style={onMsg === true ? {scale: "1"} : {scale: "0"}} 
-            className='absolute right-5 top-25 bg-red-800 p-2 z-50 transition-all'>added to Favourites </span>
+            className='absolute right-5 bottom-5 bg-red-800 p-2 z-50 transition-all'>added to Favourites </span>
           {movies && 
-                <div className='flex justify-start items-start gap-5'>
+                <div className='flex flex-col md:flex-row justify-center items-center md:items-start gap-5'>
                     <img src={movies[id].Poster} />  
                     <div
-                      className='grid gap-5'> 
+                      className='flex flex-col gap-5 text-center md:text-start'> 
                       <span>{movies[Number(id)].Title}</span>
                       <span>{movies[Number(id)].Year}</span>
                       <span>{movies[Number(id)].Runtime}</span>
                       <button 
                         onClick={() => hanldeClick()}
-                        className='cursor-pointer bg-red-800 p-2 rounded
+                        className='cursor-pointer bg-red-800 p-2 rounded text-white
                           hover:bg-red-900 transition-colors flex items-center gap-4'>
                         <span>Add To Favorites</span> <FiHeart />
                         {/* <AiFillHeart /> */}
