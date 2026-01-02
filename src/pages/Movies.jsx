@@ -3,12 +3,14 @@ import MovieSearch from '../components/MovieSearch'
 import axios from 'axios'
 import { FaIndent } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/authContext';
 
 function Movies() {
 
     const [movies, setMovies] = useState();
     const [filtredMovies, setFiltredMovies] = useState();
     const [isLoading, setIsLoadig] = useState(false);
+    const {name, setName} = useAuth();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,7 +23,7 @@ function Movies() {
                 console.log('error', err);
             } finally {
                 setIsLoadig(false);
-            }
+             }
         }
         fetchData();
     }, []) ;
@@ -33,7 +35,8 @@ function Movies() {
 
   return (
     <div className='min-h-screen pt-10.25 md:pt-20.25'>
-        <div className=' pt-10'>
+        {name && <span className='dark:text-white block p-5'>hi {name}</span>}
+        <div className=' pt-5'>
             <MovieSearch hamdleChange={(e) => handleSearch(e)} />
             {isLoading &&  <div className='w-full flex justify-center mt-10'>
                 <div className='size-10 border-2 border-red-800 
@@ -51,7 +54,8 @@ function Movies() {
                                     rounded'>
                                 <img src={mov.Poster} alt="Movie Poster" 
                                     className='aspect-square'/>
-                                <span>{mov.Title}</span>
+                                <span className='text-[10px] md:text-xl'>
+                                    {mov.Title}</span>
                                 <span>{mov.Year}</span>
                             </Link>)}
                 {filtredMovies && filtredMovies.map((mov, ind) => 

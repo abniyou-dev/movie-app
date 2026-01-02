@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFavorites } from '../context/favoriteReducer'
 import { FiHeart, FiTrash } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 function Favorites() {
 
   const {state, dispatch} = useFavorites();
-  console.log(state.movies);
+  const navigate = useNavigate();
+
+  useEffect(() =>{
+    const user = localStorage.getItem('currentUser');
+    !user ? navigate('/login') : null
+  }, [])
 
   return (
     <div

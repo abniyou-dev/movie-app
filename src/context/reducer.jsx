@@ -1,9 +1,19 @@
 
 
-export const initialVal = {
-    movies: [],
-    total: 0
+export const initialVal = () => {
+    try {
+        const storedVal = localStorage.getItem("movies");
+        if (storedVal) {
+            console.log('there is data');
+            return JSON.parse(storedVal);
+        }
+    } catch (Err) {
+        console.log(Err);
+    }
+    return {movies : [], total: 0};
 }
+
+
 
 export const reducer = (state, action) => {
     switch (action.type) {

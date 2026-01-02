@@ -1,17 +1,18 @@
 import React from 'react'
 import DarkModeToggle from '../components/DarkModeToggle';
 import movie from '../assets/movie.jpg'
+import { useAuth } from '../context/authContext';
 
 function Home() {
 
-
+  const {name, setName} = useAuth();
 
   return (
     <div 
       className='landing w-full min-h-screen' >
         <div className='w-full min-h-screen bg-black/75 grid 
           place-content-center px-5 text-white text-center gap-5'>
-          <h1 className='text-3xl font-semibold'>Movie Time</h1>
+          <h1 className='text-3xl font-semibold'>Movie Time : {name}</h1>
           <span className='text-md'>The #1 Platform for watching your facouties series and 
           movies</span>
           <button
